@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MasterCSS Testing Project</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.master.co/css"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible"
-            content="IE=edge">
-      <meta name="viewport"
-            content="width=device-width, initial-scale=1.0">
-      <title>MasterCSS Testing Project</title>
-      <link rel="stylesheet"
-            href="./css/style.css">
-      <script src="https://cdn.master.co/css"></script>
-</head>
+  <body>
+    <h1 class="font:sans font:40 font:heavy italic m:50 text:center">Hello World</h1>
+    <button type="button" class="r:20 b:0 bg:indigo-60 f:#fff" id="trigger">觸發 iframe</button>
+    <button type="button" class="r:20 b:0 bg:green-60 f:#fff" id="trigger_jq">觸發 iframe</button>
+    <iframe
+      src="./subsystem/child.html"
+      frameborder="0"
+      name="target"
+      id="target_id"
+      class="d:block bg:gold-60 mt:16 h:3xs w:full"
+    ></iframe>
+  </body>
 
-<body>
-      <h1 class="font:sans font:40 font:heavy italic m:50 text:center">Hello
-            World
-      </h1>
-      <button type="button"
-              id="trigger">觸發iframe</button>
-      <iframe src="/MIS/AS_index.html"
-              frameborder="0"
-              name="target"
-              style="height: 200px; width: 80%; background: navy; color: #fff;"></iframe>
-</body>
+  <script>
+    const trigger = document.getElementById('trigger');
+    const target_id = document.getElementById('target_id');
+    const msg = "I'm your father";
 
-<script>
-      const trigger = document.getElementById('trigger');
-      const msg = "I'm your father"
-      trigger.onclick = function () {
-            if (target.document.readyState == "complete") {
-                  target.window.fnChild(msg);
-            }
-      }
-</script>
+    trigger.addEventListener('click', () => {
+      target_id.contentWindow.getStation('斗六');
+      // if (target_id.document.readyState === 'complete') {
+      //   target_id.window.fnChild(msg);
+      // }
+      // ----- first ver. using the name property of iframe
+      // if (target.document.readyState === 'complete') {
+      //   target.window.fnChild(msg);
+      // }
+    });
 
+    // Do it in a jQuery way.
+    $('#trigger_jq').click(() => {
+      console.log('triggering_jq');
+      $('#target_id')[0].contentWindow.getStation('崙背 by jQuery');
+    });
+  </script>
 </html>
