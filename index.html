@@ -2,20 +2,37 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible"
-        content="IE=edge">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>MasterCSS Testing Project</title>
-  <link rel="stylesheet"
-        href="./css/style.css">
-  <script src="https://cdn.master.co/css"></script>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible"
+            content="IE=edge">
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+      <title>MasterCSS Testing Project</title>
+      <link rel="stylesheet"
+            href="./css/style.css">
+      <script src="https://cdn.master.co/css"></script>
 </head>
 
 <body>
-  <h1 class="font:sans font:40 font:heavy italic m:50 text:center">Hello World
-  </h1>
+      <h1 class="font:sans font:40 font:heavy italic m:50 text:center">Hello
+            World
+      </h1>
+      <button type="button"
+              id="trigger">觸發iframe</button>
+      <iframe src="/MIS/AS_index.html"
+              frameborder="0"
+              name="target"
+              style="height: 200px; width: 80%; background: navy; color: #fff;"></iframe>
 </body>
+
+<script>
+      const trigger = document.getElementById('trigger');
+      const msg = "I'm your father"
+      trigger.onclick = function () {
+            if (target.document.readyState == "complete") {
+                  target.window.fnChild(msg);
+            }
+      }
+</script>
 
 </html>
